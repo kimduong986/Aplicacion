@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bienvenido">Bienvenido!</string>
+    <string name="que_gusto_verte_de_nuevo">Que gusto verte de nuevo</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="olvidate_tu_contrase_a">Olvidate tu contraseña</string>
+    <string name="restablecer">Restablecer</string>
+</resources>
