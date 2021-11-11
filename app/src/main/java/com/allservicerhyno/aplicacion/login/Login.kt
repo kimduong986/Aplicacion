@@ -1,15 +1,15 @@
 package com.allservicerhyno.aplicacion.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.allservicerhyno.aplicacion.R
 import com.allservicerhyno.aplicacion.authenticate.Authentication
 import com.allservicerhyno.aplicacion.authenticate.AuthenticationData
 import com.allservicerhyno.aplicacion.authenticate.POSTAuthenticate
-import com.allservicerhyno.aplicacion.R
 import com.allservicerhyno.aplicacion.dashboard.Main
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,7 +17,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class Login1 : AppCompatActivity() {
+
+class Login: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
@@ -35,9 +36,7 @@ class Login1 : AppCompatActivity() {
                 .baseUrl("https://www.allser.com.co/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-            val service = retrofit.create(
-                POSTAuthenticate::class.java
-            )
+            val service = retrofit.create(POSTAuthenticate::class.java)
             val auth = Authentication(
                 "2.0",
                 Authentication.Params(
@@ -59,19 +58,19 @@ class Login1 : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val userData = response.body()
                     if (userData!!.result != null) {
-                        val intent = Intent(this@Login1, Main::class.java)
+                        val intent = Intent(this@Login, Main::class.java)
                         startActivity(intent)
-                        Toast.makeText(this@Login1, "Bienvenido!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Login, "Bienvenido!", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(
-                            this@Login1,
+                            this@Login,
                             "Usuario/Contraseña Incorrectas",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
                 } else {
                     Toast.makeText(
-                        this@Login1,
+                        this@Login,
                         "Usuario/Contraseña Incorrectas",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -80,7 +79,7 @@ class Login1 : AppCompatActivity() {
 
             override fun onFailure(call: Call<AuthenticationData?>, t: Throwable) {
                 Toast.makeText(
-                    this@Login1,
+                    this@Login,
                     "Error de autentication. Intentelo de nuevo",
                     Toast.LENGTH_SHORT
                 ).show()
@@ -88,3 +87,8 @@ class Login1 : AppCompatActivity() {
         })
     }
 }
+
+
+
+
+
