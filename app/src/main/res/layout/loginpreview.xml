@@ -69,7 +69,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="12dp"
         android:layout_marginBottom="25dp"
-        android:text="Olvidate tu contraseña"
+        android:text="@string/olvidate_tu_contrase_a"
         android:textColor="@color/Gray"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

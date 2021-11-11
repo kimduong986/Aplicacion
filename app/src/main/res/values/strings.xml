@@ -5,4 +5,17 @@
     <string name="ingresar">Ingresar</string>
     <string name="olvidate_tu_contrase_a">Olvidate tu contraseña</string>
     <string name="restablecer">Restablecer</string>
+    <string name="direccion_email">Direccion email</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="iniciar_sesion">Iniciar sesion</string>
+    <string name="necesitas_ayuda">Necesitas ayuda?</string>
+    <string name="hola">Hola!</string>
+    <string name="menu">Menu</string>
+    <string name="categorias">Categorias</string>
+    <string name="buscar">Buscar…</string>
+    <string name="mas_vistos">Mas Vistos</string>
+    <string name="ver_todo">Ver Todo…</string>
+    <string name="reporte">Reporte</string>
+    <string name="proyecto">Proyecto</string>
+    <string name="inventario">Inventario</string>
 </resources>

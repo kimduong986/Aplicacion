@@ -1,5 +1,9 @@
 package com.allservicerhyno.aplicacion.authenticate;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
+
 public class Authentication {
 
     public Authentication(String jsonrpc, Params params){

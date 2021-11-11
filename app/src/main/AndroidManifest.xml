@@ -17,7 +17,7 @@
             android:name=".dashboard.Main"
             android:exported="false" />
         <activity
-            android:name=".login.Login1"
+            android:name=".login.Login"
             android:exported="false" />
         <!--Inicio de aplicacion por defecto -->
         <activity

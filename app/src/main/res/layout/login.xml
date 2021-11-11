@@ -4,30 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.Login1">
+    tools:context=".login.Login">
+
     <EditText
         android:id="@+id/Email"
         android:layout_width="345dp"
-        android:layout_height="51dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="178dp"
+        android:inputType="textEmailAddress"
         android:layout_marginEnd="52dp"
         android:background="@drawable/input_field"
-        android:hint="Direccion email"
+        android:hint="@string/direccion_email"
         android:maxLength="30"
         android:textColorHint="@color/Gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="259dp" />
+        tools:layout_editor_absoluteY="259dp"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/Password"
         android:layout_width="346dp"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/Email"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -35,7 +38,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="52dp"
         android:background="@drawable/input_field"
-        android:hint="Contraseña"
+        android:hint="@string/contrase_a"
         android:inputType="textPassword"
         android:maxLength="20"
         android:singleLine="true"
@@ -45,7 +48,8 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Email"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintVertical_bias="0.048"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/button"
@@ -56,7 +60,7 @@
         android:layout_marginStart="29dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/button"
-        android:hint="Iniciar sesion"
+        android:hint="@string/iniciar_sesion"
         android:textAllCaps="false"
         android:textColorHint="#FFFFFF"
         android:textStyle="bold"
@@ -73,7 +77,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="40dp"
         android:layout_toEndOf="@+id/button"
-        android:hint="Necesitas ayuda?"
+        android:hint="@string/necesitas_ayuda"
         android:textColorHint="#299115"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -88,7 +92,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="12dp"
         android:layout_marginBottom="25dp"
-        android:text="Olvidate tu contraseña"
+        android:text="@string/olvidate_tu_contrase_a"
         android:textColor="@color/Gray"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,7 +113,7 @@
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="25dp"
         android:layout_toEndOf="@+id/textView2"
-        android:text="Restablecer"
+        android:text="@string/restablecer"
         android:textColor="#299115"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -131,7 +135,7 @@
         android:layout_marginTop="99dp"
         android:layout_marginEnd="88dp"
         android:layout_marginBottom="77dp"
-        android:text="Hola!"
+        android:text="@string/hola"
         android:textColor="@color/Gray"
         android:textSize="40sp"
         android:textStyle="bold"
