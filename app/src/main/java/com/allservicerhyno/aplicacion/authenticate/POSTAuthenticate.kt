@@ -1,11 +1,10 @@
-package com.allservicerhyno.aplicacion.authenticate;
+package com.allservicerhyno.aplicacion.authenticate
 
-import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
+import retrofit2.http.POST
+import retrofit2.Call
+import retrofit2.http.Body
 
-public interface POSTAuthenticate {
-
+interface POSTAuthenticate {
     @POST("web/session/authenticate")
-    public Call<AuthenticationData> authenticate (@Body Authentication auth);
+    fun authenticate(@Body auth: Authentication?): Call<AuthenticationData?>?
 }

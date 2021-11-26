@@ -1,14 +1,13 @@
-package com.allservicerhyno.aplicacion.authenticate;
+package com.allservicerhyno.aplicacion.authenticate
 
-public class AuthenticationData {
-
-    public static class Result {
-        public int uid;
-        public String name;
-        public String username;
+class AuthenticationData {
+    class Result {
+        var uid = 0
+        var name: String? = null
+        var username: String? = null
     }
 
-    public String jsonrpc;
-    public Object id;
-    public Result result;
+    var jsonrpc: String? = null
+    var id: Any? = null
+    var result: Result? = null
 }
