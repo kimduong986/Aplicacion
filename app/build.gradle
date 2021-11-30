@@ -2,11 +2,14 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
     compileSdk 31
+
+    buildFeatures {
+        viewBinding true
+    }
 
     defaultConfig {
         applicationId "com.allservicerhyno.aplicacion"
@@ -33,12 +36,6 @@ android {
     }
 }
 
-android {
-    buildFeatures {
-        viewBinding  true
-    }
-}
-
 dependencies {
 
 
@@ -56,21 +53,13 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
-    //Room DB
 
-    implementation("androidx.room:room-runtime:2.3.0")
-    annotationProcessor("androidx.room:room-compiler:2.3.0")
-    implementation("androidx.room:room-ktx:2.3.0")
-    kapt("androidx.room:room-compiler:2.3.0")
-    androidTestImplementation "androidx.room:room-testing:2.3.0"
+    def roomVersion = "2.3.0"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
 
-    //Lifecycle components
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-common-java8:2.4.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
-
-    //kotlin components
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
 
 }
