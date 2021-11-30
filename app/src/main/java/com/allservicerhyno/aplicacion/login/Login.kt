@@ -6,11 +6,17 @@ import android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.allservicerhyno.aplicacion.authenticate.Authentication
 import com.allservicerhyno.aplicacion.authenticate.AuthenticationData
 import com.allservicerhyno.aplicacion.authenticate.POSTAuthenticate
 import com.allservicerhyno.aplicacion.dashboard.Main
 import com.allservicerhyno.aplicacion.databinding.LoginBinding
+import com.allservicerhyno.aplicacion.room.App
+import com.allservicerhyno.aplicacion.room.Persona
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,6 +56,12 @@ class Login : AppCompatActivity() {
                 val repos = service.authenticate(auth)
                 login(repos, retrofit)
             } else {
+                lifecycleScope.launch {
+                   withContext(Dispatchers.IO){
+                       val userInfo = Persona(0,binding.Password.text.toString(),binding.Email.text.toString() )
+                       App.getDb().personaDao().save(userInfo)
+                   }
+                }
                 val lanzar = Intent(this, Main::class.java)
                 startActivity(lanzar)
             }
