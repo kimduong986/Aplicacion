@@ -4,16 +4,13 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET
 import android.os.Bundle
-import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.allservicerhyno.aplicacion.authenticate.Authentication
 import com.allservicerhyno.aplicacion.authenticate.AuthenticationData
 import com.allservicerhyno.aplicacion.authenticate.POSTAuthenticate
 import com.allservicerhyno.aplicacion.dashboard.Main
 import com.allservicerhyno.aplicacion.databinding.LoginBinding
-import com.allservicerhyno.aplicacion.room.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,10 +18,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class Login : AppCompatActivity() {
-    //Room Database
-    private lateinit var mUserViewModel: UserViewModel
-    
-    
+  
     
     //Init Login
     lateinit var binding: LoginBinding
@@ -33,9 +27,6 @@ class Login : AppCompatActivity() {
         binding = LoginBinding.inflate(layoutInflater)
         val root = binding.root
         setContentView(root)
-        
-        //Room Database
-        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         
         //Check connection with Allser Service
         binding.button.setOnClickListener {
@@ -59,33 +50,12 @@ class Login : AppCompatActivity() {
                 val repos = service.authenticate(auth)
                 login(repos, retrofit)
             } else {
-                insertDataToDatabase()
                 val lanzar = Intent(this, Main::class.java)
                 startActivity(lanzar)
             }
             
         }
         
-    }
-    
-    private fun insertDataToDatabase() {
-        
-        
-        val login = binding.Email.text.toString()
-        val password = binding.Password.text.toString()
-        
-        if (inputCheck(login, password)) {
-            val users = User(1, login, password)
-            mUserViewModel.addUser(users)
-            Toast.makeText(this, "Base de Datos Creada!", Toast.LENGTH_LONG).show()
-        } else {
-            Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
-        }
-        
-    }
-    
-    private fun inputCheck(login: String, password: String): Boolean {
-        return !(TextUtils.isEmpty(login) && TextUtils.isEmpty(password))
     }
     
     private fun isNetworkAvailable(): Boolean {
