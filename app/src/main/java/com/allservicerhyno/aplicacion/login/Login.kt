@@ -5,29 +5,25 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.SurfaceTexture
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProvider
+import com.allservicerhyno.aplicacion.R
 import com.allservicerhyno.aplicacion.authenticate.Authentication
 import com.allservicerhyno.aplicacion.authenticate.AuthenticationData
 import com.allservicerhyno.aplicacion.authenticate.POSTAuthenticate
-import com.allservicerhyno.aplicacion.R
 import com.allservicerhyno.aplicacion.dashboard.Main
 import com.allservicerhyno.aplicacion.room.User
 import com.allservicerhyno.aplicacion.room.UserViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -43,15 +39,16 @@ class Login : AppCompatActivity() {
     //Room Database
     private lateinit var  mUserViewModel: UserViewModel
 
-    //Login.xml
-    private val user = findViewById<EditText>(R.id.Email)
-    private val pass = findViewById<EditText>(R.id.Password)
-    private val btnLogin = findViewById<Button>(R.id.button)
+ 
 
     //Init Login
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
+        //Login.xml
+        val user = findViewById<EditText>(R.id.Email)
+        val pass = findViewById<EditText>(R.id.Password)
+        val btnLogin = findViewById<Button>(R.id.button)
         //Notification
         createNotificationChannel()
         val notification = NotificationCompat.Builder(this, channelId).also {
@@ -83,9 +80,7 @@ class Login : AppCompatActivity() {
                         // it should also be changed here, because the data you collect
                         // comes from the database that the server currently has.
                         "odoo14", user.text.toString(),
-                        pass.text.toString()
-                    )
-                )
+                        pass.text.toString()))
                 val repos = service.authenticate(auth)
                 login(repos, retrofit)
             } else {
@@ -100,13 +95,16 @@ class Login : AppCompatActivity() {
     }
 
     private fun insertDataToDatabase() {
-
+    
+        val user = findViewById<EditText>(R.id.Email)
+        val pass = findViewById<EditText>(R.id.Password)
+        
         val login = user.text.toString()
         val password = pass.text.toString()
 
         if (inputCheck(login, password)){
-            val user =User (0, login, password)
-            mUserViewModel.addUser(user)
+            val users =User (1, login, password)
+            mUserViewModel.addUser(users)
             Toast.makeText(this,"Base de Datos Creada!", Toast.LENGTH_LONG).show()
         }else{
             Toast.makeText(this,"Error", Toast.LENGTH_LONG).show()
