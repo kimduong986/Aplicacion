@@ -39,8 +39,10 @@ class Login : AppCompatActivity() {
             if (isNetworkAvailable()) {
                 lifecycleScope.launch {
                     withContext(Dispatchers.IO) {
-                        val userInfo = Persona(0,
-                            binding.Email.text.toString(), binding.Password.text.toString())
+                        val userInfo = Persona(
+                            0,
+                            binding.Email.text.toString(), binding.Password.text.toString()
+                        )
                         App.getDb().personaDao().insert(userInfo)
                     }
                 }
@@ -59,26 +61,34 @@ class Login : AppCompatActivity() {
                         // it should also be changed here, because the data you collect
                         // comes from the database that the server currently has.
                         "odoo14", binding.Email.text.toString(),
-                        binding.Password.text.toString()))
+                        binding.Password.text.toString()
+                    )
+                )
                 val repos = service.authenticate(auth)
                 login(repos, retrofit)
             } else {
-                lifecycleScope.launch {
-                    withContext(Dispatchers.IO) {
-                        val userInfo = Persona(0,
-                            binding.Email.text.toString(), binding.Password.text.toString())
-                        App.getDb().personaDao().insert(userInfo)
-                        
+                if (binding.Email.text.isNotEmpty() && binding.Password.text.isNotEmpty()) {
+                    lifecycleScope.launch {
+                        withContext(Dispatchers.IO) {
+                            val userInfo = Persona(
+                                0,
+                                binding.Email.text.toString(), binding.Password.text.toString()
+                            )
+                            App.getDb().personaDao().insert(userInfo)
+                        }
+                       
                     }
+                    
+                }else{
+                    Toast.makeText(this@Login, "Ingresar Correo / Contraseña", Toast.LENGTH_SHORT).show()
                 }
-                val lanzar = Intent(this, Main::class.java)
-                startActivity(lanzar)
+                
             }
             
         }
         
         //Restore password
-        binding.restablecer.setOnClickListener{
+        binding.restablecer.setOnClickListener {
             val lanzar = Intent(this, UpdatePassword::class.java)
             startActivity(lanzar)
         }

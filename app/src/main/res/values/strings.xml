@@ -3,7 +3,7 @@
     <string name="bienvenido">Bienvenido!</string>
     <string name="que_gusto_verte_de_nuevo">Que gusto verte de nuevo</string>
     <string name="ingresar">Ingresar</string>
-    <string name="olvidate_tu_contrase_a">Olvidaste tu contraseña</string>
+    <string name="olvidate_tu_contrase_a">Olvidaste tu contraseña?</string>
     <string name="restablecer">Restablecer</string>
     <string name="direccion_email">Direccion email</string>
     <string name="contrase_a">Contraseña</string>
@@ -20,4 +20,5 @@
     <string name="ajustes">Ajustes</string>
     <string name="cuenta">Cuenta</string>
     <string name="menu">Menu</string>
+    <string name="actualizar">Actualizar</string>
 </resources>
