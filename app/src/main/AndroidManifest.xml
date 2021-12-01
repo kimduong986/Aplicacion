@@ -16,12 +16,14 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".login.UpdatePassword"
+            android:exported="false" />
+        <activity
             android:name=".dashboard.Main"
             android:exported="false" />
         <activity
             android:name=".login.Login"
-            android:exported="false" />
-        <!--Inicio de aplicacion por defecto -->
+            android:exported="false" /> <!-- Inicio de aplicacion por defecto -->
         <activity
             android:name=".login.Loginpreview"
             android:exported="true">

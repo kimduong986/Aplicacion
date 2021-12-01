@@ -37,6 +37,13 @@ class Login : AppCompatActivity() {
         //Check connection with Allser Service
         binding.button.setOnClickListener {
             if (isNetworkAvailable()) {
+                lifecycleScope.launch {
+                    withContext(Dispatchers.IO) {
+                        val userInfo = Persona(0,
+                            binding.Email.text.toString(), binding.Password.text.toString())
+                        App.getDb().personaDao().insert(userInfo)
+                    }
+                }
                 //Connection with All Service
                 val retrofit = Retrofit.Builder()
                     .baseUrl("https://www.allser.com.co/")
@@ -72,7 +79,7 @@ class Login : AppCompatActivity() {
         
     }
     
-    
+    //Check connection with Allser Service
     private fun isNetworkAvailable(): Boolean {
         val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
         val capabilities = cm.getNetworkCapabilities(cm.activeNetwork)
