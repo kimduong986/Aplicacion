@@ -21,12 +21,7 @@ class Loginpreview : AppCompatActivity() {
             val lanzar = Intent(this, Login::class.java)
             startActivity(lanzar)
 
-
         }
         
-        binding.restablecer.setOnClickListener{
-            val lanzar = Intent(this, UpdatePassword::class.java)
-            startActivity(lanzar)
-        }
     }
 }

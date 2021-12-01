@@ -77,6 +77,12 @@ class Login : AppCompatActivity() {
             
         }
         
+        //Restore password
+        binding.restablecer.setOnClickListener{
+            val lanzar = Intent(this, UpdatePassword::class.java)
+            startActivity(lanzar)
+        }
+        
     }
     
     //Check connection with Allser Service
