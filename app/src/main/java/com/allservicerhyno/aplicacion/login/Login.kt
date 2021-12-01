@@ -24,7 +24,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class Login : AppCompatActivity() {
-  
+    
     
     //Init Login
     lateinit var binding: LoginBinding
@@ -57,10 +57,12 @@ class Login : AppCompatActivity() {
                 login(repos, retrofit)
             } else {
                 lifecycleScope.launch {
-                   withContext(Dispatchers.IO){
-                       val userInfo = Persona(0,binding.Password.text.toString(),binding.Email.text.toString() )
-                       App.getDb().personaDao().save(userInfo)
-                   }
+                    withContext(Dispatchers.IO) {
+                        val userInfo = Persona(0,
+                            binding.Email.text.toString(), binding.Password.text.toString())
+                        App.getDb().personaDao().insert(userInfo)
+                        
+                    }
                 }
                 val lanzar = Intent(this, Main::class.java)
                 startActivity(lanzar)
@@ -69,6 +71,7 @@ class Login : AppCompatActivity() {
         }
         
     }
+    
     
     private fun isNetworkAvailable(): Boolean {
         val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager

@@ -4,6 +4,7 @@ import androidx.room.*
 
 @Dao
 interface PersonaDao {
+    
     /*
     @QUERY --> SELECT
     @INSERT --> INSERTAR
@@ -11,15 +12,14 @@ interface PersonaDao {
     @UPDATE --> ACTUALIZAR
      */
     
-    
     @Query("SELECT * FROM personas")
     fun  findAll():List<Persona>
     
     @Query("SELECT * FROM personas WHERE id = :idPersona")
     fun findAllById(idPersona:Long):Persona
     
-    @Insert
-    fun save (persona: Persona)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insert (persona: Persona)
     
     @Update
     fun update (persona: Persona)

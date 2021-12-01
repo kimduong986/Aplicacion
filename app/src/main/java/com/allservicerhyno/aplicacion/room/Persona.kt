@@ -2,9 +2,10 @@ package com.allservicerhyno.aplicacion.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "personas")
+@Entity(tableName = "personas", indices = [Index(value = ["Login"], unique = true)])
 data class Persona(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

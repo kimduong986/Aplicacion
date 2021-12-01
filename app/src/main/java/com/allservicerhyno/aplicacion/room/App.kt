@@ -6,7 +6,7 @@ class App:Application() {
    
     companion object {
         private var db: AppDatabase? = null
-        public fun getDb(): AppDatabase{
+        fun getDb(): AppDatabase{
             return db!!
         }
     }
