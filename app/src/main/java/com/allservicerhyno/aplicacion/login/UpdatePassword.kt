@@ -31,7 +31,7 @@ class UpdatePassword : AppCompatActivity() {
                     withContext(Dispatchers.IO) {
                         
                         val updateUser = Persona(
-                            1,
+                            0,
                             binding.Email.text.toString(),
                             binding.Password.text.toString()
                         )
