@@ -15,7 +15,7 @@ abstract class AppDatabase : RoomDatabase() {
             if (db == null) {
                 db = Room.databaseBuilder(
                     context,
-                    AppDatabase::class.java, "Login_db"
+                    AppDatabase::class.java, "Login.db"
                 ).build()
             }
             return db!!

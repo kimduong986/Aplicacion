@@ -1,7 +1,6 @@
 package com.allservicerhyno.aplicacion.room
 
 import androidx.room.*
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PersonaDao {
@@ -20,7 +19,7 @@ interface PersonaDao {
     fun findAllById(idPersona:Long):Persona
     
     @Query("SELECT * FROM personas WHERE  Login = :email and Password = :password")
-    fun getUser(email: String, password: String): Flow<List<Persona>>
+    fun getUser(email: String, password: String)
     
     @Insert
     fun insert (persona: Persona)

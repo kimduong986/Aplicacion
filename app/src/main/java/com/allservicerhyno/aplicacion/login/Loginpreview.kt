@@ -16,7 +16,7 @@ class Loginpreview : AppCompatActivity() {
         setContentView(root)
 
         //Codigo para ingresar a la siguiente pagina despues de
-        // darle al boton de ingresar en el menu de inicio
+        // darle al boton de ingresar en el menu de Inicio
         binding.btnIniciarSesion.setOnClickListener{
             val lanzar = Intent(this, Login::class.java)
             startActivity(lanzar)

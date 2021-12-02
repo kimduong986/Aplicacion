@@ -73,7 +73,8 @@ class Login : AppCompatActivity() {
                             App.getDb().personaDao().getUser(binding.Email.text.toString(), binding.Password.text.toString())
                         }
                     }
-                  
+                    val lanzar = Intent(this, Main::class.java)
+                    startActivity(lanzar)
                     
                 }else{
                     Toast.makeText(this@Login, "Ingresar Correo / Contraseña", Toast.LENGTH_SHORT).show()

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class Persona(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id: Long= 0,
+    val id: Long= 1,
     @ColumnInfo(name = "Login")
     val email: String,
     @ColumnInfo(name = "Password")
