@@ -67,17 +67,13 @@ class Login : AppCompatActivity() {
                 val repos = service.authenticate(auth)
                 login(repos, retrofit)
             } else {
-                if (binding.Email.text.isNotEmpty() && binding.Password.text.isNotEmpty()) {
+                if (binding.Email.text.isEmpty() && binding.Password.text.isEmpty()) {
                     lifecycleScope.launch {
                         withContext(Dispatchers.IO) {
-                            val userInfo = Persona(
-                                0,
-                                binding.Email.text.toString(), binding.Password.text.toString()
-                            )
-                            App.getDb().personaDao().insert(userInfo)
+                            App.getDb().personaDao().getUser(binding.Email.text.toString(), binding.Password.text.toString())
                         }
-                       
                     }
+                  
                     
                 }else{
                     Toast.makeText(this@Login, "Ingresar Correo / Contraseña", Toast.LENGTH_SHORT).show()

@@ -22,6 +22,7 @@ class Loginpreview : AppCompatActivity() {
             startActivity(lanzar)
 
         }
+       
         
     }
 }

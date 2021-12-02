@@ -31,7 +31,7 @@ class UpdatePassword : AppCompatActivity() {
                     withContext(Dispatchers.IO) {
                         
                         val updateUser = Persona(
-                            0,
+                            1,
                             binding.Email.text.toString(),
                             binding.Password.text.toString()
                         )
@@ -41,6 +41,8 @@ class UpdatePassword : AppCompatActivity() {
                 }
                 val lanzar = Intent(this@UpdatePassword, Login::class.java)
                 startActivity(lanzar)
+                
+                
             } else {
                 Toast.makeText(
                     this@UpdatePassword,

@@ -93,8 +93,8 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="122dp"
-        android:layout_height="31dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/Password"
         android:layout_marginStart="36dp"
         android:layout_marginTop="40dp"
@@ -109,12 +109,13 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_width="206dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="25dp"
-        android:text="@string/olvidate_tu_contrase_a"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="11dp"
+        android:text="@string/olvidaste_tu_contrase_a"
         android:textColor="@color/Gray"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -127,14 +128,12 @@
 
     <TextView
         android:id="@+id/restablecer"
-        android:layout_width="200dp"
-        android:layout_height="20dp"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="25dp"
-        android:layout_toEndOf="@+id/textView2"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/restablecer"
         android:textColor="#299115"
         android:textStyle="bold"
