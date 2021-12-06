@@ -14,7 +14,7 @@ interface PersonaDao {
      */
 
     @Query("SELECT * FROM personas WHERE  Login = :email and Password = :password")
-    fun getUser(email: String, password: String):LiveData<Persona>
+    fun getUser(email: String, password: String): LiveData<Persona>
     
     @Insert
     fun insert (persona: Persona)

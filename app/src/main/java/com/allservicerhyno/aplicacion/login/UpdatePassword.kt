@@ -1,5 +1,6 @@
 package com.allservicerhyno.aplicacion.login
 
+import android.R.attr
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -11,6 +12,10 @@ import com.allservicerhyno.aplicacion.room.Persona
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import android.R.attr.password
+
+
+
 
 
 class UpdatePassword : AppCompatActivity() {
@@ -26,24 +31,26 @@ class UpdatePassword : AppCompatActivity() {
         //Restore password
         binding.actualizar.setOnClickListener {
             
-            if (binding.Email.text.isEmpty()) {
-                if (binding.Password.text.isEmpty()){
+            if (binding.Email.text.toString().isEmpty()) {
+                Toast.makeText(this@UpdatePassword, "Ingresar su Correo Electronico", Toast.LENGTH_SHORT).show()
+            } else {
+                if (binding.Password.text.toString().isEmpty()){
                     Toast.makeText(this@UpdatePassword, "Ingresar una Contraseña", Toast.LENGTH_SHORT).show()
                 }else{
+                    val  user: Boolean? =  null
+                    val updateUser = Persona(null, binding.Email.text.toString(), binding.Password.text.toString())
                     lifecycleScope.launch {
                         withContext(Dispatchers.IO) {
-                            val updateUser = Persona(
-                                null,
-                                binding.Email.text.toString(),
-                                binding.Password.text.toString())
                             App.getDb().personaDao().update(updateUser)
                         }
                     }
-                    val lanzar = Intent(this@UpdatePassword, Login::class.java)
-                    startActivity(lanzar)
+                    if (user == true){
+                        val lanzar = Intent(this@UpdatePassword, Login::class.java)
+                        startActivity(lanzar)
+                    }else{
+                        Toast.makeText(this@UpdatePassword, "Error de Usuario", Toast.LENGTH_SHORT).show()
+                    }
                 }
-            } else {
-                Toast.makeText(this@UpdatePassword, "Ingresar su Correo Electronico", Toast.LENGTH_SHORT).show()
             }
         }
     }

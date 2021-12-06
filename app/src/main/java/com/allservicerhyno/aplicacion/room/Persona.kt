@@ -11,9 +11,9 @@ data class Persona(
     @ColumnInfo(name = "id")
     val id: Long? = 0,
     @ColumnInfo(name = "Login")
-    val email: String,
+    val email: String?,
     @ColumnInfo(name = "Password")
-    val password: String
+    val password: String?
 )
 {
     override fun toString(): String {

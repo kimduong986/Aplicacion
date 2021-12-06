@@ -13,7 +13,6 @@ import com.allservicerhyno.aplicacion.authenticate.POSTAuthenticate
 import com.allservicerhyno.aplicacion.dashboard.Main
 import com.allservicerhyno.aplicacion.databinding.LoginBinding
 import com.allservicerhyno.aplicacion.room.App
-import com.allservicerhyno.aplicacion.room.AppDatabase
 import com.allservicerhyno.aplicacion.room.Persona
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,7 +22,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.net.PasswordAuthentication
 
 class Login : AppCompatActivity() {
 
@@ -39,12 +37,9 @@ class Login : AppCompatActivity() {
         //Check connection with Allser Service
         binding.button.setOnClickListener {
             if (isNetworkAvailable()) {
+                val userInfo = Persona(null, binding.Email.text.toString(), binding.Password.text.toString())
                 lifecycleScope.launch {
                     withContext(Dispatchers.IO) {
-                        val userInfo = Persona(
-                            null,
-                            binding.Email.text.toString(), binding.Password.text.toString()
-                        )
                         App.getDb().personaDao().insert(userInfo)
                     }
                 }
@@ -70,23 +65,20 @@ class Login : AppCompatActivity() {
                 login(repos, retrofit)
             } else {
                 if (binding.Email.text.isEmpty()) {
-                    Toast.makeText(this@Login, "Ingresar Correo Electronico", Toast.LENGTH_SHORT)
-                        .show()
-                } else {
                     if (binding.Password.text.isEmpty()) {
                         Toast.makeText(this@Login, "Ingresar Contraseña", Toast.LENGTH_SHORT).show()
                     } else {
                         lifecycleScope.launch {
                             withContext(Dispatchers.IO) {
-                                App.getDb().personaDao().getUser(
-                                    binding.Email.text.toString(),
-                                    binding.Password.text.toString()
-                                )
+                                App.getDb().personaDao().getUser(binding.Email.text.toString(), binding.Password.text.toString())
                             }
                         }
                         val lanzar = Intent(this, Main::class.java)
                         startActivity(lanzar)
                     }
+                } else {
+                    Toast.makeText(this@Login, "Ingresar Correo Electronico", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
