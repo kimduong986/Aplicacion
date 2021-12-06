@@ -26,32 +26,25 @@ class UpdatePassword : AppCompatActivity() {
         //Restore password
         binding.actualizar.setOnClickListener {
             
-            if (binding.Email.text.isNotEmpty() && binding.Password.text.isNotEmpty()) {
-                lifecycleScope.launch {
-                    withContext(Dispatchers.IO) {
-                        
-                        val updateUser = Persona(
-                            1,
-                            binding.Email.text.toString(),
-                            binding.Password.text.toString()
-                        )
-                        App.getDb().personaDao().update(updateUser)
+            if (binding.Email.text.isEmpty()) {
+                if (binding.Password.text.isEmpty()){
+                    Toast.makeText(this@UpdatePassword, "Ingresar una Contraseña", Toast.LENGTH_SHORT).show()
+                }else{
+                    lifecycleScope.launch {
+                        withContext(Dispatchers.IO) {
+                            val updateUser = Persona(
+                                null,
+                                binding.Email.text.toString(),
+                                binding.Password.text.toString())
+                            App.getDb().personaDao().update(updateUser)
+                        }
                     }
-                    
+                    val lanzar = Intent(this@UpdatePassword, Login::class.java)
+                    startActivity(lanzar)
                 }
-                val lanzar = Intent(this@UpdatePassword, Login::class.java)
-                startActivity(lanzar)
-                
-                
             } else {
-                Toast.makeText(
-                    this@UpdatePassword,
-                    "Error al Actualizar",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this@UpdatePassword, "Ingresar su Correo Electronico", Toast.LENGTH_SHORT).show()
             }
         }
-        
     }
-    
 }
